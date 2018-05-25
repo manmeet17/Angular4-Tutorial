@@ -1,0 +1,13 @@
+<span 
+  class="fa"
+ (click)="onClick()"
+ [ngClass]="{
+   'fa-star-o': !active,
+   'fa-star': active
+ }"
+ [ngStyle]="{
+   'background-color': active ? 'blue': 'grey',
+   'color': active ? 'white' : 'black'
+ }"
+ >
+</span>

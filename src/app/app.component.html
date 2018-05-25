@@ -1,0 +1,69 @@
+
+<!-- First Way -->
+<app-star [is-favorite]="active" (change)="onFavoriteChange($event)"></app-star>
+
+
+<!-- Second way -->
+<!-- This one is generally useful if we want reusable components -->
+<app-bootstrap-panel>
+    <!-- This way we can provide custom content to reusable component -->
+    <!-- These divs here provide what we need to put in ng-content(gets replaced by divs) elements of the component -->
+    <div class="heading">Heading</div>
+
+    <!-- We can also use ng-container if we only want to replace ng-content with the content of the element we have here instead of the whole element -->
+    <ng-container class="heading">Hello</ng-container>
+
+    <div class="body">
+        <h2>Body</h2>
+        <p>Content</p>
+    </div>
+</app-bootstrap-panel>
+
+
+<app-bootstrap-panel>
+    <ng-container class="heading">{{tweet.body}}</ng-container>
+    <ng-container class="body">{{tweet.likes}}</ng-container>
+</app-bootstrap-panel>
+
+<like [likes]="tweet.likes" [isActive]="tweet.isLiked"
+(change)="onChange($event)"
+></like>
+<br>
+
+<!-- ngIf Directive -->
+<!-- Using ngIf is best -->
+<!-- <div *ngIf="courses.length > 0;then con1 else con2"></div>
+<ng-template #con1>List of Courses</ng-template>
+<ng-template #con2>No Courses Yet</ng-template> -->
+
+<!-- Hidden, an alternative for ngIf -->
+<!-- Difference is , that hidden elements are in the DOM but not shown -->
+<!-- <div [hidden]="courses.length == 0">
+    List of courses
+</div>
+<div [hidden]="courses.length>0">No course buddy</div> -->
+
+
+<!-- ngSwitch -->
+<ul class="nav nav-pills">
+    <li class="nav-item"><a [class.active]="viewMode=='map'" class="nav-link" (click)="onViewChange()">Map View</a></li>
+    <li class="nav-item"><a [class.active]="viewMode=='list'" class="nav-link" (click)="onViewChange()">List View</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+    <!-- "" for value of directive and '' for string value -->
+    <div *ngSwitchCase="'map'">Map View Content</div>
+    <div *ngSwitchCase="'list'">List View Content</div>
+    <div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<button (click)="load()">Load course</button>
+<button class="btn btn-primary" (click)="onAdd()">Add course</button>
+<ul>
+    <li *ngFor="let course of courses; index as i;even as isEven; trackBy: trackCourse">
+         {{course.name}} <!-- <span *ngIf="isEven">(EVEN)</span> -->
+         <button (click)="onRemove(course)" class="btn btn-danger">Remove</button>
+    </li>
+</ul>
+
+<!-- Will render only if object(task.assignee) is not null -->
+<span>{{task.assignee?.name}}</span>

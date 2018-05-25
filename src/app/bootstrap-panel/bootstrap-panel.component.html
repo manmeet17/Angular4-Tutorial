@@ -1,0 +1,18 @@
+<div class="card">
+  <h5 class="card-header">
+    <!-- Consumer can provide content to place here in ng-content instead of binding it -->
+    <!-- We need to reference the ng-content elements to some class,id or any css element -->
+    <ng-content select=".heading"></ng-content>
+
+
+    <!-- Otherwise we would have had -->
+    <!-- {{heading}} -->
+  
+  
+  </h5>
+  <div class="card-body">
+    <ng-content select=".body"></ng-content>
+  </div>
+</div>
+
+<!-- We dont need a selector if we have only one ng-content element -->
