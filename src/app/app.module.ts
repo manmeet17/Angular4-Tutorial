@@ -17,6 +17,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { BootstrapPanelComponent } from './bootstrap-panel/bootstrap-panel.component';
 import { TweetComponent } from './tweet/tweet.component';
 import { ImportFormatDirective } from './import-format.directive';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ImportFormatDirective } from './import-format.directive';
     FavoriteComponent,
     BootstrapPanelComponent,
     TweetComponent,
-    ImportFormatDirective
+    ImportFormatDirective,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,

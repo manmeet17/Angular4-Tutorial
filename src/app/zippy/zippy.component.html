@@ -1,0 +1,14 @@
+<div class="card">
+  <h5 (click)="dropDown()" class="card-header">{{title}}
+    <span
+    class="fa"
+    [ngClass]="{
+      'fa-angle-down': !active,
+      'fa-angle-up': active
+    }"
+    ></span>
+  </h5>
+  <h5 class="card-body" *ngIf="active">
+    <ng-content></ng-content>
+  </h5>
+</div>
